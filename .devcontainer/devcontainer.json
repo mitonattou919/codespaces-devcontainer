@@ -1,0 +1,17 @@
+{
+  "name": "claude-code-dev",
+  "dockerComposeFile": "./docker-compose.yml",
+  "service": "code",
+  "runServices": ["code", "proxy"],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,consistency=cached",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "remoteUser": "ccode",
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code"
+      ]
+    }
+  }
+}
