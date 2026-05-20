@@ -25,8 +25,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   procps \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN groupadd -g ${USER_GID} ${USERNAME} \
- && useradd -m -u ${USER_UID} -g ${USER_GID} -s /bin/bash ${USERNAME} \
+RUN groupmod -n ${USERNAME} node \
+ && usermod -l ${USERNAME} -d /home/${USERNAME} -m node \
  && mkdir -p /workspace /home/${USERNAME}/.claude /home/${USERNAME}/.config \
  && chown ${USERNAME}:${USERNAME} /workspace /home/${USERNAME}/.claude /home/${USERNAME}/.config
 
